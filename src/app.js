@@ -1,7 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import authRoutes from './controllers/AuthController.js';
+import studentRoutes from './controllers/StudentController.js';
 
 // Load environment variables
 dotenv.config();
@@ -13,10 +15,6 @@ console.log('MONGODB_URI:', process.env.MONGODB_URI);
 console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'Set' : 'Not Set');
 console.log('JWT_EXPIRES_IN:', process.env.JWT_EXPIRES_IN);
 console.log('NODE_ENV:', process.env.NODE_ENV);
-
-// Import routes
-const authRoutes = require('./controllers/AuthController');
-const studentRoutes = require('./controllers/StudentController');
 
 const app = express();
 

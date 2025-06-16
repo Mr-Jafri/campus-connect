@@ -2,6 +2,7 @@
   "name": "student-management-api",
   "version": "1.0.0",
   "description": "A RESTful API for student management with authentication",
+  "type": "module",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

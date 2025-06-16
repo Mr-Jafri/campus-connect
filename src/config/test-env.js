@@ -1,4 +1,7 @@
-require('dotenv').config();
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+
+dotenv.config();
 
 console.log('\nTesting Environment Variables:');
 console.log('------------------------------');
@@ -19,6 +22,7 @@ requiredEnvVars.forEach(varName => {
     console.error(`❌ ${varName} is not set`);
     allVarsPresent = false;
   } else {
+    // Don't show the actual JWT_SECRET value for security
     if (varName === 'JWT_SECRET') {
       console.log(`✅ ${varName} is set (value hidden for security)`);
     } else {
@@ -29,7 +33,6 @@ requiredEnvVars.forEach(varName => {
 
 console.log('\nMongoDB Connection Test:');
 console.log('------------------------');
-const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {

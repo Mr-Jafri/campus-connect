@@ -1,7 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const AuthService = require('../services/AuthService');
+import express from 'express';
+import AuthService from '../services/AuthService.js';
 
+const router = express.Router();
+
+// Register new user
 router.post('/register', async (req, res) => {
   try {
     const { user, token } = await AuthService.register(req.body);
@@ -11,6 +13,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// Login user
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -21,4 +24,4 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router; 
+export default router; 

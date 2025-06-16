@@ -1,4 +1,4 @@
-const Student = require('../models/Student');
+import Student from '../models/Student.js';
 
 class StudentService {
   static async createStudent(studentData) {
@@ -60,4 +60,4 @@ class StudentService {
   }
 }
 
-module.exports = StudentService; 
+export default StudentService; 

@@ -1,10 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const StudentService = require('../services/StudentService');
-const auth = require('../middleware/auth');
+import express from 'express';
+import StudentService from '../services/StudentService.js';
+import auth from '../middleware/auth.js';
 
+const router = express.Router();
+
+// Apply auth middleware to all routes
 router.use(auth);
 
+// Create a new student
 router.post('/', async (req, res) => {
   try {
     const student = await StudentService.createStudent(req.body);
@@ -14,6 +17,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Get all students
 router.get('/', async (req, res) => {
   try {
     const students = await StudentService.getAllStudents();
@@ -23,6 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get student by ID
 router.get('/:id', async (req, res) => {
   try {
     const student = await StudentService.getStudentById(req.params.id);
@@ -32,6 +37,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Update student
 router.put('/:id', async (req, res) => {
   try {
     const student = await StudentService.updateStudent(req.params.id, req.body);
@@ -41,6 +47,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// Delete student
 router.delete('/:id', async (req, res) => {
   try {
     const student = await StudentService.deleteStudent(req.params.id);
@@ -50,4 +57,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router; 
+export default router; 
